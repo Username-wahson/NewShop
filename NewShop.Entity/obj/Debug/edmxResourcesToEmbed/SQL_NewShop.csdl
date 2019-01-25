@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="NewShopModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="NewShopEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="ns_managers" EntityType="NewShopModel.ManagerInfo" />
+    <EntitySet Name="ns_menu" EntityType="NewShopModel.MenuInfo" />
+    <EntitySet Name="ns_role" EntityType="NewShopModel.RoleInfo" />
+  </EntityContainer>
+  <EntityType Name="ManagerInfo">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Password" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="PasswordSalt" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="LoginDate" Type="DateTime" Precision="3" />
+    <Property Name="CreatorTime" Type="DateTime" Precision="3" />
+    <Property Name="CreatorUserId" Type="Int32" />
+    <Property Name="LastModifyTime" Type="DateTime" Precision="3" />
+    <Property Name="LastModifyUserId" Type="Int32" />
+    <Property Name="DeleteTime" Type="DateTime" Precision="3" />
+    <Property Name="DeleteUserId" Type="Int32" />
+    <Property Name="DeleteMark" Type="Boolean" />
+    <Property Name="RoleId" Type="Int32" />
+  </EntityType>
+  <EntityType Name="MenuInfo">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="ParentId" Type="Int32" />
+    <Property Name="Layers" Type="Int32" />
+    <Property Name="FullName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="UrlAddress" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="SortCode" Type="Int32" />
+    <Property Name="DeleteMark" Type="Boolean" />
+    <Property Name="EnabledMark" Type="Boolean" />
+    <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="CreatorTime" Type="DateTime" Precision="3" />
+    <Property Name="CreatorUserId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="LastModifyTime" Type="DateTime" Precision="3" />
+    <Property Name="LastModifyUserId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="DeleteTime" Type="DateTime" Precision="3" />
+    <Property Name="DeleteUserId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="RoleInfo">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RoleName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Description" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="CreatorTime" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="CreatorUserId" Type="Int32" />
+    <Property Name="LastModifyTime" Type="DateTime" Precision="3" />
+    <Property Name="LastModifyUserId" Type="Int32" />
+    <Property Name="DeleteTime" Type="DateTime" Precision="3" />
+    <Property Name="DeleteUserId" Type="Int32" />
+    <Property Name="DeleteMark" Type="Boolean" />
+  </EntityType>
+</Schema>

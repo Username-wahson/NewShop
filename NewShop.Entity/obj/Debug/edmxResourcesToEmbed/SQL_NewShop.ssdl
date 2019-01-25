@@ -1,0 +1,94 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="NewShopModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <!--生成过程中发现错误:
+警告 6002: 表/视图“NewShop.dbo.ns_managers”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+  <EntityType Name="ns_managers">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RoleId" Type="int" />
+    <Property Name="UserName" Type="varchar" MaxLength="100" />
+    <Property Name="Password" Type="varchar" MaxLength="100" />
+    <Property Name="PasswordSalt" Type="varchar" MaxLength="100" />
+    <Property Name="LoginDate" Type="datetime" />
+    <Property Name="CreatorTime" Type="datetime" />
+    <Property Name="CreatorUserId" Type="int" />
+    <Property Name="LastModifyTime" Type="datetime" />
+    <Property Name="LastModifyUserId" Type="int" />
+    <Property Name="DeleteTime" Type="datetime" />
+    <Property Name="DeleteUserId" Type="int" />
+    <Property Name="DeleteMark" Type="bit" />
+  </EntityType>
+  <EntityType Name="ns_menu">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ParentId" Type="int" />
+    <Property Name="Layers" Type="int" />
+    <Property Name="FullName" Type="varchar" MaxLength="50" />
+    <Property Name="UrlAddress" Type="varchar" MaxLength="500" />
+    <Property Name="SortCode" Type="int" />
+    <Property Name="DeleteMark" Type="bit" />
+    <Property Name="EnabledMark" Type="bit" />
+    <Property Name="Description" Type="varchar" MaxLength="500" />
+    <Property Name="CreatorTime" Type="datetime" />
+    <Property Name="CreatorUserId" Type="varchar" MaxLength="50" />
+    <Property Name="LastModifyTime" Type="datetime" />
+    <Property Name="LastModifyUserId" Type="varchar" MaxLength="50" />
+    <Property Name="DeleteTime" Type="datetime" />
+    <Property Name="DeleteUserId" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <!--生成过程中发现错误:
+警告 6002: 表/视图“NewShop.dbo.ns_role”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+  <EntityType Name="ns_role">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RoleName" Type="varchar" MaxLength="100" />
+    <Property Name="Description" Type="varchar" MaxLength="100" />
+    <Property Name="CreatorTime" Type="nchar" MaxLength="10" />
+    <Property Name="CreatorUserId" Type="int" />
+    <Property Name="LastModifyTime" Type="datetime" />
+    <Property Name="LastModifyUserId" Type="int" />
+    <Property Name="DeleteTime" Type="datetime" />
+    <Property Name="DeleteUserId" Type="int" />
+    <Property Name="DeleteMark" Type="bit" />
+  </EntityType>
+  <EntityContainer Name="NewShopModelStoreContainer">
+    <EntitySet Name="ns_menu" EntityType="Self.ns_menu" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ns_managers" EntityType="Self.ns_managers" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [ns_managers].[Id] AS [Id], 
+    [ns_managers].[RoleId] AS [RoleId], 
+    [ns_managers].[UserName] AS [UserName], 
+    [ns_managers].[Password] AS [Password], 
+    [ns_managers].[PasswordSalt] AS [PasswordSalt], 
+    [ns_managers].[LoginDate] AS [LoginDate], 
+    [ns_managers].[CreatorTime] AS [CreatorTime], 
+    [ns_managers].[CreatorUserId] AS [CreatorUserId], 
+    [ns_managers].[LastModifyTime] AS [LastModifyTime], 
+    [ns_managers].[LastModifyUserId] AS [LastModifyUserId], 
+    [ns_managers].[DeleteTime] AS [DeleteTime], 
+    [ns_managers].[DeleteUserId] AS [DeleteUserId], 
+    [ns_managers].[DeleteMark] AS [DeleteMark]
+    FROM [dbo].[ns_managers] AS [ns_managers]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="ns_role" EntityType="Self.ns_role" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [ns_role].[Id] AS [Id], 
+    [ns_role].[RoleName] AS [RoleName], 
+    [ns_role].[Description] AS [Description], 
+    [ns_role].[CreatorTime] AS [CreatorTime], 
+    [ns_role].[CreatorUserId] AS [CreatorUserId], 
+    [ns_role].[LastModifyTime] AS [LastModifyTime], 
+    [ns_role].[LastModifyUserId] AS [LastModifyUserId], 
+    [ns_role].[DeleteTime] AS [DeleteTime], 
+    [ns_role].[DeleteUserId] AS [DeleteUserId], 
+    [ns_role].[DeleteMark] AS [DeleteMark]
+    FROM [dbo].[ns_role] AS [ns_role]</DefiningQuery>
+    </EntitySet>
+  </EntityContainer>
+</Schema>
